@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Chemistry vs Compatibility — Marriage Readiness Quiz</title>
+<meta name="description" content="A fun, modern relationship quiz that reveals practical blind spots before marriage. Because vibes alone are not a retirement plan.">
+<meta property="og:title" content="Chemistry vs Compatibility — Marriage Readiness Quiz">
+<meta property="og:description" content="A conversation-starting compatibility tool. Because vibes alone are not a retirement plan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f5f1;--surface:#faf9f6;--card:#ffffff;--border:#e8e4de;
+  --text:#1e1c18;--text-muted:#7a7872;--text-faint:#b0ada6;
+  --primary:#c94a60;--primary-hover:#b03e52;--primary-light:rgba(201,74,96,.08);
+  --primary-ring:rgba(201,74,96,.2);
+  --accent:#e67e3c;
+  --green:#3a8a5c;--green-bg:rgba(58,138,92,.08);--green-light:#e8f5ee;
+  --amber:#c48a1a;--amber-bg:rgba(196,138,26,.08);--amber-light:#fef8e8;
+  --red:#c44040;--red-bg:rgba(196,64,64,.08);--red-light:#fceaea;
+  --radius:0.625rem;--radius-lg:1rem;--radius-xl:1.25rem;--radius-full:9999px;
+  --shadow-sm:0 1px 3px rgba(30,28,24,.06);
+  --shadow:0 4px 12px rgba(30,28,24,.08);
+  --shadow-lg:0 8px 24px rgba(30,28,24,.1);
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --transition:180ms cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:var(--font);font-size:16px;line-height:1.6;color:var(--text);background:var(--bg);min-height:100dvh}
+button{cursor:pointer;font:inherit;border:none;background:none}
+a{color:var(--primary);text-decoration:none}
+
+/* Utilities */
+.container{max-width:720px;margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border-radius:var(--radius-full);font-weight:600;font-size:15px;transition:all var(--transition);white-space:nowrap}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow-sm)}
+.btn-primary:hover{background:var(--primary-hover);box-shadow:var(--shadow)}
+.btn-outline{border:1.5px solid var(--border);color:var(--text);background:var(--card)}
+.btn-outline:hover{border-color:var(--primary-ring);background:var(--primary-light)}
+.btn-sm{padding:8px 18px;font-size:13px}
+.btn-lg{padding:16px 36px;font-size:16px}
+.btn-full{width:100%}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px}
+
+/* Progress bar */
+.progress-track{height:6px;background:var(--border);border-radius:var(--radius-full);overflow:hidden}
+.progress-fill{height:100%;background:var(--primary);border-radius:var(--radius-full);transition:width 0.4s ease}
+
+/* Score ring */
+.score-ring{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .value{position:absolute;font-size:32px;font-weight:700;color:var(--text)}
+
+/* Option cards */
+.option-card{width:100%;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:var(--radius-lg);border:1.5px solid var(--border);background:var(--card);text-align:left;transition:all var(--transition);cursor:pointer}
+.option-card:hover{border-color:var(--primary-ring);background:var(--primary-light)}
+.option-card.selected{border-color:var(--primary);background:var(--primary-light);box-shadow:0 0 0 3px var(--primary-ring)}
+.option-card .emoji{font-size:22px;width:32px;text-align:center;flex-shrink:0}
+.option-card .label{font-size:14px;font-weight:500;flex:1}
+.option-card .check{width:22px;height:22px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.option-card .check svg{width:12px;height:12px;stroke:#fff;stroke-width:3;fill:none}
+
+/* Slider */
+.slider-wrap{padding:0 4px}
+.slider-input{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:var(--radius-full);background:var(--border);outline:none;transition:all var(--transition)}
+.slider-input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:50%;background:var(--primary);cursor:pointer;box-shadow:var(--shadow)}
+.slider-input::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--primary);cursor:pointer;border:none;box-shadow:var(--shadow)}
+.slider-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-top:8px}
+.slider-value{text-align:center;font-size:24px;font-weight:700;color:var(--text);margin-top:8px}
+
+/* Category pills */
+.pills{display:flex;gap:6px;overflow-x:auto;padding:8px 0;scrollbar-width:none;-ms-overflow-style:none}
+.pills::-webkit-scrollbar{display:none}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:var(--radius-full);font-size:12px;font-weight:600;white-space:nowrap;transition:all var(--transition)}
+.pill-active{background:var(--primary);color:#fff}
+.pill-done{background:var(--green-light);color:var(--green)}
+.pill-default{background:var(--surface);color:var(--text-muted);border:1px solid var(--border)}
+
+/* Score badges */
+.score-badge{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--radius-lg)}
+.score-badge .icon{width:24px;height:24px;flex-shrink:0}
+.score-badge .meta{flex:1;min-width:0}
+.score-badge .meta small{font-size:11px;color:var(--text-muted);display:block}
+.score-badge .meta strong{font-size:18px;font-weight:700}
+.badge-green{background:var(--green-bg)}.badge-green .meta strong,.badge-green .icon{color:var(--green)}
+.badge-amber{background:var(--amber-bg)}.badge-amber .meta strong,.badge-amber .icon{color:var(--amber)}
+.badge-red{background:var(--red-bg)}.badge-red .meta strong,.badge-red .icon{color:var(--red)}
+
+/* Conversation cards */
+.convo-card{display:flex;align-items:flex-start;gap:12px;padding:16px;border-radius:var(--radius-lg);background:var(--card);border:1px solid var(--border)}
+.convo-card .arrow{color:var(--primary);flex-shrink:0;margin-top:2px}
+.convo-card p{font-size:14px;line-height:1.6;color:var(--text)}
+
+/* Tier banners */
+.tier-banner{padding:20px 24px;border-radius:var(--radius-xl);border:1.5px solid}
+.tier-green{background:var(--green-light);border-color:#b8dcc8}
+.tier-green h2{color:var(--green)}
+.tier-amber{background:var(--amber-light);border-color:#e8d8a8}
+.tier-amber h2{color:var(--amber)}
+.tier-red{background:var(--red-light);border-color:#e8b8b8}
+.tier-red h2{color:var(--red)}
+
+/* Bar chart */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.bar-row .emoji{font-size:18px;width:28px;text-align:center;flex-shrink:0}
+.bar-row .info{flex:1;min-width:0}
+.bar-row .info .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.bar-row .info .top span:first-child{font-size:14px;font-weight:500}
+.bar-row .info .top span:last-child{font-size:14px;font-weight:700}
+.bar-track{height:8px;background:var(--border);border-radius:var(--radius-full);overflow:hidden}
+.bar-fill{height:100%;border-radius:var(--radius-full);transition:width 1s ease}
+.bar-green{background:var(--green)}
+.bar-amber{background:var(--amber)}
+.bar-red{background:var(--red)}
+
+/* Animations */
+.fade-in{animation:fadeIn .4s ease both}
+.slide-up{animation:slideUp .4s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* Nav */
+.quiz-header{position:sticky;top:0;z-index:10;background:rgba(247,245,241,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:12px 20px}
+.quiz-header .top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.quiz-header .back-btn{display:flex;align-items:center;gap:4px;font-size:14px;color:var(--text-muted);transition:color var(--transition)}
+.quiz-header .back-btn:hover{color:var(--text)}
+.quiz-header .counter{font-size:14px;color:var(--text-muted)}
+
+/* Footer */
+footer{padding:24px 20px;text-align:center;border-top:1px solid var(--border);font-size:12px;color:var(--text-faint)}
+footer a{color:var(--text-muted)}
+
+/* Grid */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.grid-2,.grid-3{grid-template-columns:1fr 1fr}}
+
+/* Sections */
+.section-gap{margin-top:32px}
+.section-title{font-size:18px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;margin-bottom:16px}
+
+/* Misc */
+.text-center{text-align:center}
+.text-muted{color:var(--text-muted)}
+.text-xs{font-size:12px}
+.text-sm{font-size:14px}
+.mt-1{margin-top:4px}.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mt-6{margin-top:24px}.mt-8{margin-top:32px}
+.mb-1{margin-bottom:4px}.mb-2{margin-bottom:8px}.mb-3{margin-bottom:12px}.mb-4{margin-bottom:16px}.mb-6{margin-bottom:24px}
+.gap-2>*+*{margin-top:8px}
+.gap-3>*+*{margin-top:12px}
+
+/* Hide sections */
+.hidden{display:none!important}
+
+/* Responsive buttons */
+@media(max-width:480px){
+  .btn-row{flex-direction:column}
+  .btn-row .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== LANDING ========== -->
+<div id="landing">
+  <section style="background:linear-gradient(180deg,rgba(201,74,96,.05) 0%,var(--bg) 100%)">
+    <div class="container text-center" style="padding:64px 20px 48px">
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:var(--radius-full);background:var(--primary-light);color:var(--primary);font-size:14px;font-weight:600;margin-bottom:28px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        Relationship Readiness Tool
+      </span>
+      <h1 style="font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:8px">
+        Chemistry vs <span style="color:var(--primary)">Compatibility</span>
+      </h1>
+      <p style="font-size:clamp(1rem,2.5vw,1.25rem);color:var(--text-muted);font-weight:500;margin-bottom:4px">A Marriage Readiness Quiz</p>
+      <p style="font-size:clamp(.9rem,2vw,1.1rem);color:var(--text-faint);margin-bottom:36px">Because vibes alone are not a retirement plan.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px" class="btn-row">
+        <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Quiz <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        <button class="btn btn-outline btn-lg" onclick="showSample()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          See Sample Results
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding-top:48px;padding-bottom:48px">
+    <h2 class="text-center" style="font-size:clamp(1.2rem,3vw,1.5rem);font-weight:700;margin-bottom:6px">What This Quiz Covers</h2>
+    <p class="text-center text-muted text-sm mb-6" style="max-width:480px;margin-left:auto;margin-right:auto">The stuff people avoid talking about before marriage — and regret not discussing after.</p>
+    <div class="grid-3" style="gap:14px">
+      <div class="card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-3"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <strong style="font-size:14px;display:block;margin-bottom:4px">7 Critical Categories</strong>
+        <p class="text-sm text-muted">Money, work stability, kids, lifestyle, communication, values, and maturity</p>
+      </div>
+      <div class="card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-3"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        <strong style="font-size:14px;display:block;margin-bottom:4px">Conversation Starters</strong>
+        <p class="text-sm text-muted">Get specific discussion topics tailored to your actual blind spots</p>
+      </div>
+      <div class="card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+        <strong style="font-size:14px;display:block;margin-bottom:4px">No Judgment</strong>
+        <p class="text-sm text-muted">This isn't about whether they're worthy — it's about whether you're prepared</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:40px">
+    <h2 class="text-center" style="font-size:clamp(1.2rem,3vw,1.5rem);font-weight:700;margin-bottom:16px">Quiz Categories</h2>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+      <span class="pill pill-default">💰 Money & Debt</span>
+      <span class="pill pill-default">💼 Work & Benefits</span>
+      <span class="pill pill-default">👶 Kids & Family</span>
+      <span class="pill pill-default">🏡 Lifestyle</span>
+      <span class="pill pill-default">💬 Communication</span>
+      <span class="pill pill-default">🧭 Values & Goals</span>
+      <span class="pill pill-default">🎯 Maturity</span>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:48px">
+    <div class="card text-center" style="max-width:560px;margin:0 auto;padding:28px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 12px"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <p style="font-size:clamp(1rem,2.5vw,1.15rem);font-weight:500;font-style:italic;margin-bottom:8px">"Love is emotional. Marriage is operational."</p>
+      <p class="text-sm text-muted" style="max-width:400px;margin:0 auto">This quiz doesn't tell you who to marry. It reveals where you need to have honest conversations before you do.</p>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:32px">
+    <p class="text-xs text-center text-muted" style="max-width:520px;margin:0 auto;line-height:1.7">
+      This quiz is a conversation tool designed for entertainment and self-reflection. It is not a scientific predictor of divorce, relationship success, or marital outcomes. It does not provide therapy, legal advice, financial guidance, or medical/mental health diagnoses. No individual should be judged or shamed based on quiz results.
+    </p>
+  </section>
+</div>
+
+<!-- ========== QUIZ ========== -->
+<div id="quiz" class="hidden">
+  <div class="quiz-header">
+    <div class="top-row">
+      <button class="back-btn" id="quizBackBtn" onclick="quizBack()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span id="backLabel">Exit</span>
+      </button>
+      <div class="counter">
+        <span id="qCounter">1 of 45</span>
+        <button class="btn btn-sm" id="finishEarlyBtn" onclick="finishQuiz()" style="color:var(--primary);margin-left:8px;display:none">Finish Early</button>
+      </div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:2%"></div></div>
+    <div class="pills" id="categoryPills"></div>
+  </div>
+
+  <main class="container" style="padding-top:24px;padding-bottom:80px">
+    <div id="questionArea"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:16px;border-top:1px solid var(--border)">
+      <button class="btn btn-outline btn-sm" id="prevBtn" onclick="prevQuestion()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg> Back
+      </button>
+      <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
+        Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </main>
+</div>
+
+<!-- ========== RESULTS ========== -->
+<div id="results" class="hidden">
+  <div class="container" style="padding-top:32px;padding-bottom:48px">
+    <div id="sampleBanner" class="hidden" style="padding:12px;border-radius:var(--radius-lg);background:var(--primary-light);border:1px solid var(--primary-ring);text-align:center;margin-bottom:24px">
+      <p style="font-size:14px;font-weight:600;color:var(--primary)">✨ These are sample results. Take the quiz to get your real scores.</p>
+    </div>
+    <div id="resultsContent"></div>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <p style="margin-bottom:6px">This tool is for reflection and conversation only. It is not therapy, legal advice, financial advice, or a predictor of outcomes.</p>
+  <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+</footer>
+
+<script>
+// ========== DATA ==========
+const categories=[
+  {id:'money',label:'Money',emoji:'💰'},
+  {id:'work',label:'Work & Stability',emoji:'💼'},
+  {id:'kids',label:'Kids & Family',emoji:'👶'},
+  {id:'lifestyle',label:'Lifestyle',emoji:'🏡'},
+  {id:'communication',label:'Communication',emoji:'💬'},
+  {id:'values',label:'Values & Future',emoji:'🧭'},
+  {id:'maturity',label:'Maturity',emoji:'🎯'}
+];
+
+const catWeights={money:1.5,work:1.3,kids:1.3,lifestyle:0.8,communication:1.4,values:1.2,maturity:1.1};
+
+const questions=[
+  // MONEY
+  {id:'m1',cat:'money',w:3,text:'Is your partner currently employed?',type:'choice',opts:[{l:'Yes, stably',v:10,e:'✅'},{l:'Yes, but inconsistently',v:5,e:'⚠️'},{l:'No',v:1,e:'🚩'}]},
+  {id:'m2',cat:'money',w:3,text:'How would you describe their relationship with money?',type:'choice',opts:[{l:'Disciplined saver',v:10,e:'🏦'},{l:'Balanced spender',v:8,e:'⚖️'},{l:'Spender (but aware)',v:5,e:'🛍️'},{l:'Avoids thinking about it',v:2,e:'🙈'},{l:'Reckless with money',v:0,e:'🔥'}]},
+  {id:'m3',cat:'money',w:3,text:'Do they carry high-interest debt (credit cards, payday loans)?',type:'choice',opts:[{l:'No debt or only low-interest',v:10,e:'✅'},{l:'Some, but managing it',v:5,e:'⚠️'},{l:'Significant high-interest debt',v:1,e:'🚩'},{l:"I don't know",v:2,e:'❓'}]},
+  {id:'m4',cat:'money',w:2,text:'Are they financially transparent with you?',sub:'Do they openly discuss income, debts, and spending?',type:'slider',min:0,max:10,labels:['Completely secretive','Fully open']},
+  {id:'m5',cat:'money',w:2,text:'Do they contribute to any retirement savings?',type:'choice',opts:[{l:'Yes, consistently',v:10,e:'📈'},{l:'Sometimes / just started',v:6,e:'🌱'},{l:'No',v:2,e:'⚠️'},{l:"I don't know",v:1,e:'❓'}]},
+  {id:'m6',cat:'money',w:2,text:'Do they budget or track their spending?',type:'choice',opts:[{l:'Yes, actively',v:10,e:'📊'},{l:'Loosely / in their head',v:6,e:'🤔'},{l:'Not at all',v:2,e:'🚩'}]},
+  {id:'m7',cat:'money',w:2,text:'Are they financially dependent on someone else?',sub:'Parents, ex, government assistance beyond what\'s needed, etc.',type:'choice',opts:[{l:'Fully independent',v:10,e:'💪'},{l:'Some support (temporary)',v:6,e:'🔄'},{l:'Heavily dependent',v:2,e:'🚩'}]},
+  {id:'m8',cat:'money',w:2,text:'How would you describe their generosity with money?',type:'choice',opts:[{l:'Generous and balanced',v:10,e:'💝'},{l:'Careful but fair',v:8,e:'⚖️'},{l:'Controlling with money',v:2,e:'🚩'},{l:'Secretive about spending',v:2,e:'🤫'},{l:'Careless / wasteful',v:3,e:'💸'}]},
+  // WORK
+  {id:'w1',cat:'work',w:3,text:'Does your partner have health insurance?',type:'choice',opts:[{l:'Yes, through work',v:10,e:'✅'},{l:'Yes, self-purchased',v:8,e:'✅'},{l:'No',v:1,e:'🚩'},{l:"I don't know",v:2,e:'❓'}]},
+  {id:'w2',cat:'work',w:2,text:'Do they have career ambition or professional direction?',type:'slider',min:0,max:10,labels:['No direction','Clear goals and drive']},
+  {id:'w3',cat:'work',w:2,text:'How stable is their work history?',type:'choice',opts:[{l:'Very stable / progressive',v:10,e:'📈'},{l:'Some changes, but reasonable',v:7,e:'🔄'},{l:'Frequent job switches',v:4,e:'⚠️'},{l:'Quits impulsively',v:1,e:'🚩'}]},
+  {id:'w4',cat:'work',w:2,text:'Do they expect someone else to "figure things out" for them financially?',type:'choice',opts:[{l:'No, they own it',v:10,e:'💪'},{l:'Sometimes',v:5,e:'⚠️'},{l:'Yes, regularly',v:1,e:'🚩'}]},
+  {id:'w5',cat:'work',w:2,text:'Are they contributing to a retirement plan through work?',type:'choice',opts:[{l:'Yes, with employer match',v:10,e:'🎯'},{l:'Yes, basic contributions',v:8,e:'✅'},{l:'No plan available / not eligible',v:4,e:'⚠️'},{l:'Available but not contributing',v:2,e:'🚩'}]},
+  {id:'w6',cat:'work',w:2,text:'How reliable are they with work commitments?',type:'slider',min:0,max:10,labels:['Unreliable','Rock solid']},
+  // KIDS
+  {id:'k1',cat:'kids',w:3,text:'Do you both agree on whether you want children?',type:'choice',opts:[{l:'Yes, fully aligned',v:10,e:'💚'},{l:'Mostly, some details to work out',v:6,e:'🤔'},{l:'We disagree',v:1,e:'🚩'},{l:"Haven't discussed it yet",v:2,e:'❓'}]},
+  {id:'k2',cat:'kids',w:2,text:'Are your parenting style expectations aligned?',sub:'Discipline approach, roles, education philosophy',type:'slider',min:0,max:10,labels:['Very different views','Fully aligned']},
+  {id:'k3',cat:'kids',w:2,text:"How does your partner handle their family's involvement in your relationship?",type:'choice',opts:[{l:'Healthy boundaries',v:10,e:'✅'},{l:'Mostly good, occasional overreach',v:7,e:'⚠️'},{l:'Enmeshed / no boundaries',v:2,e:'🚩'},{l:'Family drama affects us regularly',v:1,e:'🚩'}]},
+  {id:'k4',cat:'kids',w:2,text:'Are they overly dependent on their parents?',type:'choice',opts:[{l:'No, healthy independence',v:10,e:'💪'},{l:'Somewhat, but aware of it',v:6,e:'🔄'},{l:'Yes, significantly',v:2,e:'🚩'}]},
+  {id:'k5',cat:'kids',w:2,text:'How much extended family drama do you anticipate in your marriage?',type:'slider',min:0,max:10,labels:['A lot of drama','Very peaceful']},
+  {id:'k6',cat:'kids',w:2,text:'Would you trust them as the primary caregiver for your child?',type:'choice',opts:[{l:'Absolutely',v:10,e:'💯'},{l:'With some concern',v:5,e:'🤔'},{l:'No',v:1,e:'🚩'},{l:'Not applicable',v:-1,e:'➖'}]},
+  // LIFESTYLE
+  {id:'l1',cat:'lifestyle',w:2,text:'How aligned are your spending expectations for daily life?',sub:'Groceries, dining, subscriptions, clothing',type:'slider',min:0,max:10,labels:['Very different','Very aligned']},
+  {id:'l2',cat:'lifestyle',w:1,text:'Do your housing expectations match?',type:'choice',opts:[{l:'Yes, same vision',v:10,e:'🏡'},{l:'Close enough to compromise',v:7,e:'🤝'},{l:'Very different expectations',v:3,e:'⚠️'}]},
+  {id:'l3',cat:'lifestyle',w:1,text:'How do your cleanliness and household standards compare?',type:'choice',opts:[{l:'Very similar',v:10,e:'✨'},{l:'Manageable differences',v:7,e:'🧹'},{l:'Major mismatch',v:3,e:'😤'}]},
+  {id:'l4',cat:'lifestyle',w:1,text:'Do they have any habits that concern you?',sub:'Excessive drinking, substance use, unhealthy routines',type:'choice',opts:[{l:'No concerns',v:10,e:'✅'},{l:'Minor concerns',v:6,e:'⚠️'},{l:'Significant concerns',v:2,e:'🚩'}]},
+  {id:'l5',cat:'lifestyle',w:1,text:'Are your social lives compatible?',sub:'Introvert/extrovert balance, friends, going out',type:'slider',min:0,max:10,labels:['Total mismatch','Great fit']},
+  {id:'l6',cat:'lifestyle',w:1,text:'Where do you both fall on luxury vs. simplicity?',type:'choice',opts:[{l:'Both prefer simplicity',v:9,e:'🌿'},{l:'Both enjoy some luxury',v:8,e:'✨'},{l:'Similar middle ground',v:10,e:'⚖️'},{l:'Very different expectations',v:3,e:'⚠️'}]},
+  // COMMUNICATION
+  {id:'c1',cat:'communication',w:3,text:'What happens when your partner gets upset during a disagreement?',type:'choice',opts:[{l:'They talk it through calmly',v:10,e:'💬'},{l:'They need space, then return',v:8,e:'🔄'},{l:'They shut down completely',v:3,e:'🧊'},{l:'They escalate or yell',v:2,e:'🌋'},{l:'They blame and deflect',v:1,e:'🚩'}]},
+  {id:'c2',cat:'communication',w:3,text:'Can your partner genuinely apologize?',type:'choice',opts:[{l:'Yes, sincerely',v:10,e:'💚'},{l:"Sometimes, but it's hard for them",v:5,e:'🤔'},{l:'Rarely or never',v:1,e:'🚩'}]},
+  {id:'c3',cat:'communication',w:3,text:"Do they take responsibility when they're wrong?",type:'slider',min:0,max:10,labels:["Never — always someone else's fault","Always owns it"]},
+  {id:'c4',cat:'communication',w:2,text:'Do they avoid hard conversations?',type:'choice',opts:[{l:'No — they face things head-on',v:10,e:'💪'},{l:'Sometimes avoids discomfort',v:5,e:'😬'},{l:'Yes — major avoidance pattern',v:1,e:'🚩'}]},
+  {id:'c5',cat:'communication',w:2,text:'After a fight, how quickly do you repair?',type:'choice',opts:[{l:'Same day, with real resolution',v:10,e:'🩹'},{l:'Within a day or two',v:7,e:'⏳'},{l:'It lingers for days',v:4,e:'⚠️'},{l:'We sweep it under the rug',v:2,e:'🚩'}]},
+  {id:'c6',cat:'communication',w:2,text:'How safe do you feel expressing your real feelings to them?',type:'slider',min:0,max:10,labels:['Not safe at all','Completely safe']},
+  // VALUES
+  {id:'v1',cat:'values',w:3,text:'How aligned are your views on faith or spirituality?',type:'choice',opts:[{l:'Very aligned',v:10,e:'🙏'},{l:'Different but respectful',v:7,e:'🤝'},{l:'A source of tension',v:3,e:'⚠️'},{l:"Haven't really discussed it",v:2,e:'❓'}]},
+  {id:'v2',cat:'values',w:2,text:'Do you share a similar vision of what a "successful life" looks like?',type:'slider',min:0,max:10,labels:['Completely different visions','Same dream']},
+  {id:'v3',cat:'values',w:2,text:'Are you aligned on where you want to live long-term?',type:'choice',opts:[{l:'Yes, same area / plans',v:10,e:'📍'},{l:'Flexible and open',v:8,e:'🌍'},{l:'Different ideas',v:3,e:'⚠️'},{l:"Haven't discussed it",v:2,e:'❓'}]},
+  {id:'v4',cat:'values',w:2,text:'What are their views on commitment and divorce?',type:'choice',opts:[{l:'Marriage is a lifetime commitment',v:10,e:'💍'},{l:'Committed, but practical about it',v:8,e:'🤔'},{l:'Casual about commitment',v:3,e:'⚠️'},{l:"We haven't discussed this",v:2,e:'❓'}]},
+  {id:'v5',cat:'values',w:2,text:'Do you agree on role expectations in marriage?',sub:'Who works, who handles home, financial responsibilities, etc.',type:'slider',min:0,max:10,labels:['Very different expectations','Completely aligned']},
+  {id:'v6',cat:'values',w:2,text:'How ambitious is your partner about life goals?',type:'slider',min:0,max:10,labels:['No goals / drifting','Highly driven']},
+  // MATURITY
+  {id:'r1',cat:'maturity',w:2,text:'Do they keep their commitments?',sub:'Shows up when they say they will, follows through on promises',type:'slider',min:0,max:10,labels:['Rarely','Always']},
+  {id:'r2',cat:'maturity',w:2,text:'Can they handle basic adult responsibilities?',sub:'Bills on time, clean space, car maintenance, appointments',type:'choice',opts:[{l:'Yes, fully capable',v:10,e:'✅'},{l:'Mostly, with some gaps',v:6,e:'🔧'},{l:'Struggles significantly',v:2,e:'🚩'}]},
+  {id:'r3',cat:'maturity',w:2,text:'Can they delay gratification?',sub:'Save for something vs. buy it now, wait for the right moment',type:'choice',opts:[{l:'Yes, patient and strategic',v:10,e:'🎯'},{l:'Somewhat — working on it',v:6,e:'🔄'},{l:'No — very impulsive',v:2,e:'🚩'}]},
+  {id:'r4',cat:'maturity',w:2,text:'How do they respond to correction or feedback?',type:'choice',opts:[{l:'Gracefully — they listen and adjust',v:10,e:'💚'},{l:'Initial defensiveness, but they come around',v:7,e:'🔄'},{l:'They get upset or dismissive',v:3,e:'⚠️'},{l:'They never accept correction',v:1,e:'🚩'}]},
+  {id:'r5',cat:'maturity',w:2,text:'Do they have self-awareness?',sub:'Do they recognize their own patterns, weaknesses, and triggers?',type:'slider',min:0,max:10,labels:['Zero self-awareness','Very self-aware']},
+  {id:'r6',cat:'maturity',w:2,text:'Do they take ownership without making excuses?',type:'choice',opts:[{l:'Yes, consistently',v:10,e:'💪'},{l:'More often than not',v:7,e:'🔄'},{l:'Usually makes excuses',v:3,e:'⚠️'},{l:"It's always someone else's fault",v:1,e:'🚩'}]},
+  {id:'r7',cat:'maturity',w:1,text:'Do they plan ahead or live moment to moment?',type:'choice',opts:[{l:'Plans ahead',v:10,e:'📋'},{l:'Mix of both',v:7,e:'⚖️'},{l:'Almost entirely spontaneous',v:4,e:'🎲'}]},
+];
+
+// ========== STATE ==========
+let answers={};
+let currentQ=0;
+let isSampleView=false;
+
+// ========== NAVIGATION ==========
+function show(id){
+  document.getElementById('landing').classList.toggle('hidden',id!=='landing');
+  document.getElementById('quiz').classList.toggle('hidden',id!=='quiz');
+  document.getElementById('results').classList.toggle('hidden',id!=='results');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function startQuiz(){
+  answers={};currentQ=0;isSampleView=false;
+  show('quiz');renderQuestion();updatePills();
+}
+
+function showSample(){
+  isSampleView=true;
+  const sampleAns={};
+  const vals=[3,5,7,8,6,4,9,5,7,6];
+  questions.forEach(q=>sampleAns[q.id]=vals[Math.floor(Math.random()*vals.length)]);
+  answers=sampleAns;
+  showResults();
+}
+
+function quizBack(){
+  if(currentQ>0){prevQuestion();}
+  else{show('landing');}
+}
+
+function prevQuestion(){
+  if(currentQ>0){currentQ--;renderQuestion();updatePills();}
+}
+
+function nextQuestion(){
+  if(currentQ<questions.length-1){currentQ++;renderQuestion();updatePills();}
+  else{finishQuiz();}
+}
+
+function finishQuiz(){isSampleView=false;showResults();}
+
+// ========== RENDER QUESTION ==========
+function renderQuestion(){
+  const q=questions[currentQ];
+  const cat=categories.find(c=>c.id===q.cat);
+  const pct=((currentQ+1)/questions.length*100).toFixed(1);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('qCounter').textContent=`${currentQ+1} of ${questions.length}`;
+  document.getElementById('backLabel').textContent=currentQ>0?'Previous':'Exit';
+  document.getElementById('prevBtn').disabled=currentQ===0;
+
+  const answered=Object.keys(answers).length;
+  document.getElementById('finishEarlyBtn').style.display=answered>=questions.length*0.6&&currentQ<questions.length-1?'inline':'none';
+
+  const isLast=currentQ===questions.length-1;
+  document.getElementById('nextBtn').innerHTML=isLast?'See Results <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>':'Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+
+  let html=`<div class="fade-in">`;
+  html+=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="font-size:20px">${cat.emoji}</span><span class="text-sm text-muted" style="font-weight:500">${cat.label}</span></div>`;
+  html+=`<h2 style="font-size:clamp(1.15rem,3vw,1.4rem);font-weight:700;line-height:1.3;margin-bottom:4px">${q.text}</h2>`;
+  if(q.sub) html+=`<p class="text-sm text-muted mb-4">${q.sub}</p>`;
+  else html+=`<div class="mb-4"></div>`;
+
+  if(q.type==='slider'){
+    const val=answers[q.id]!==undefined?answers[q.id]:5;
+    html+=`<div class="slider-wrap">
+      <input type="range" class="slider-input" min="${q.min}" max="${q.max}" step="1" value="${val}" oninput="handleSlider('${q.id}',this.value)">
+      <div class="slider-labels"><span>${q.labels[0]}</span><span>${q.labels[1]}</span></div>
+      <div class="slider-value" id="sliderVal">${answers[q.id]!==undefined?val:'—'} / ${q.max}</div>
+    </div>`;
+  } else {
+    html+=`<div class="gap-2">`;
+    q.opts.forEach((opt,i)=>{
+      const sel=answers[q.id]===opt.v?'selected':'';
+      html+=`<button class="option-card ${sel}" onclick="handleChoice('${q.id}',${opt.v},${i})">
+        <span class="emoji">${opt.e}</span>
+        <span class="label">${opt.l}</span>
+        ${sel?'<span class="check"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>':''}
+      </button>`;
+    });
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+  document.getElementById('questionArea').innerHTML=html;
+  updateNextBtn();
+}
+
+function handleChoice(qid,val,idx){
+  answers[qid]=val;renderQuestion();updatePills();
+}
+
+function handleSlider(qid,val){
+  answers[qid]=parseInt(val);
+  document.getElementById('sliderVal').textContent=val+' / '+questions.find(q=>q.id===qid).max;
+  updateNextBtn();updatePills();
+}
+
+function updateNextBtn(){
+  const q=questions[currentQ];
+  document.getElementById('nextBtn').disabled=answers[q.id]===undefined;
+}
+
+function updatePills(){
+  let html='';
+  categories.forEach(cat=>{
+    const catQs=questions.filter(q=>q.cat===cat.id);
+    const answered=catQs.filter(q=>answers[q.id]!==undefined).length;
+    const isActive=questions[currentQ].cat===cat.id;
+    const isDone=answered===catQs.length;
+    const cls=isActive?'pill-active':isDone?'pill-done':'pill-default';
+    html+=`<span class="pill ${cls}">${cat.emoji} <span class="hide-mobile">${cat.label}</span> ${answered}/${catQs.length}</span>`;
+  });
+  document.getElementById('categoryPills').innerHTML=html;
+}
+
+// ========== CALCULATE RESULTS ==========
+function calcResults(){
+  const catScores={};
+  categories.forEach(c=>catScores[c.id]={total:0,max:0,count:0});
+
+  questions.forEach(q=>{
+    const a=answers[q.id];
+    if(a===undefined||a===-1)return;
+    catScores[q.cat].total+=a*q.w;
+    catScores[q.cat].max+=10*q.w;
+    catScores[q.cat].count++;
+  });
+
+  const catResults=categories.map(c=>{
+    const d=catScores[c.id];
+    return{id:c.id,label:c.label,emoji:c.emoji,score:d.max>0?Math.round(d.total/d.max*100):0};
+  });
+
+  let wTotal=0,wMax=0;
+  catResults.forEach(c=>{const w=catWeights[c.id]||1;wTotal+=c.score*w;wMax+=100*w;});
+  const overall=wMax>0?Math.round(wTotal/wMax*100):0;
+
+  const g=id=>catResults.find(c=>c.id===id)?.score||0;
+  const financial=Math.round(g('money')*.6+g('work')*.4);
+  const family=Math.round(g('kids')*.5+g('values')*.3+g('lifestyle')*.2);
+  const conflict=Math.round(100-g('communication'));
+  const pressure=Math.round(100-(financial*.3+family*.2+g('communication')*.3+g('maturity')*.2));
+  const retirement=Math.round(g('work')*.5+g('money')*.5);
+
+  const sorted=[...catResults].sort((a,b)=>b.score-a.score);
+  const weakest=[...catResults].sort((a,b)=>a.score-b.score);
+
+  const strengthTexts={money:'Solid financial foundation — you both speak the same money language.',work:'Career stability and direction are in good shape.',kids:"You're on the same page about the kid question — that matters more than people realize.",lifestyle:"You'll actually enjoy living together — that's half the battle.",communication:'Strong communication skills — the #1 predictor of relationship longevity.',values:"Same life direction. That's rare and valuable.",maturity:'High personal responsibility on both sides — this is a huge green flag.'};
+  const blindTexts={money:'Money is the #1 cause of divorce. Your financial alignment needs work.',work:'Career instability or lack of benefits could become a pressure cooker.',kids:'Family expectations misalignment is a ticking time bomb if unaddressed.',lifestyle:"Lifestyle mismatch erodes love slowly — like a drip you don't hear until the ceiling falls.",communication:"If you can't fight well together, you can't build well together.",values:'You may be aligned emotionally but underprepared operationally.',maturity:'One person carrying the mental load gets old fast.'};
+
+  const strengths=sorted.slice(0,3).map(c=>strengthTexts[c.id]);
+  const blindSpots=weakest.slice(0,3).map(c=>blindTexts[c.id]);
+
+  const convos=[];
+  if(g('money')<65)convos.push('"Show me your credit score and I\'ll show you mine." Have a full financial disclosure conversation — debts, savings, spending habits, credit scores, and financial goals.');
+  if(g('communication')<65)convos.push('"What happens when we disagree about something that really matters?" Discuss your actual conflict patterns, not the version you want to believe.');
+  if(g('kids')<65)convos.push('"Do you want kids? How many? Who stays home? How do we discipline?" These questions are non-negotiable before marriage.');
+  if(g('values')<65)convos.push('"What does a successful life look like to you in 10 years?" Compare visions in detail — not just vibes, but specifics.');
+  if(g('work')<65)convos.push('"What\'s your plan if you lose your job tomorrow?" Discuss career stability, emergency funds, and benefits realistically.');
+  if(g('maturity')<65)convos.push('"Can you tell me about a time you were wrong and how you handled it?" Maturity shows up in how someone handles accountability.');
+  if(convos.length===0)convos.push("You're in a strong position. Keep having regular check-in conversations about money, goals, and how you're both feeling.");
+
+  const risks=[];
+  const riskTexts={money:'Financial stress is the most common trigger for marital conflict. Your scores suggest unresolved money issues that will intensify under shared expenses.',work:'Income instability or lack of benefits could leave your household vulnerable. One medical emergency without insurance can create years of debt.',kids:'Fundamental disagreement about children or family boundaries is extremely difficult to resolve after marriage.',lifestyle:'Day-to-day lifestyle friction accumulates. What feels like a small annoyance at year one can become genuine resentment by year five.',communication:'Poor conflict resolution is the strongest predictor of relationship failure. This area needs immediate attention — possibly with a counselor.',values:'Misaligned values create diverging life paths. You may find yourselves wanting fundamentally different things.',maturity:'Maturity imbalances create caretaker dynamics. One partner consistently carrying the load leads to burnout.'};
+  catResults.forEach(c=>{if(c.score<40&&riskTexts[c.id])risks.push(riskTexts[c.id]);});
+  if(risks.length===0)risks.push('No critical stress risks identified. Continue nurturing your areas of strength and keep communicating about the smaller gaps.');
+
+  let tier,title,summary;
+  if(overall>=75){tier='green';title='Strong Foundation — Proceed With Confidence';summary="Your relationship shows strong compatibility across the areas that matter most. You appear aligned on the practical realities of building a life together. Keep communicating openly and don't stop having the hard conversations.";}
+  else if(overall>=50){tier='amber';title='Promise With Pressure Points — Eyes Wide Open';summary="There's real compatibility here, but several areas need honest conversation before you commit to forever. These aren't dealbreakers — they're invitations to get on the same page. The couples who make it aren't the ones with no issues; they're the ones who faced theirs early.";}
+  else{tier='red';title='Major Conversations Required — Slow Down and Talk';summary="Your results suggest significant gaps in practical compatibility. This doesn't mean the relationship is doomed, but it does mean rushing to the altar would be premature. Several foundational areas need serious, honest discussion — and possibly professional guidance.";}
+
+  return{overall,financial,family,conflict,pressure,retirement,catResults,strengths,blindSpots,convos,risks,tier,title,summary};
+}
+
+// ========== RENDER RESULTS ==========
+function showResults(){
+  show('results');
+  document.getElementById('sampleBanner').classList.toggle('hidden',!isSampleView);
+  const r=calcResults();
+
+  const badgeClass=s=>s>=70?'badge-green':s>=45?'badge-amber':'badge-red';
+  const barClass=s=>s>=70?'bar-green':s>=45?'bar-amber':'bar-red';
+  const scoreColor=s=>s>=70?'var(--green)':s>=45?'var(--amber)':'var(--red)';
+
+  let html=`
+  <div class="text-center slide-up">
+    <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:16px">Overall Compatibility Score</p>
+    <div class="score-ring">
+      <svg width="140" height="140">
+        <circle cx="70" cy="70" r="60" fill="none" stroke="var(--border)" stroke-width="10"/>
+        <circle cx="70" cy="70" r="60" fill="none" stroke="${scoreColor(r.overall)}" stroke-width="10" stroke-linecap="round"
+          stroke-dasharray="${2*Math.PI*60}" stroke-dashoffset="${2*Math.PI*60-(r.overall/100)*2*Math.PI*60}"
+          style="transition:stroke-dashoffset 1.2s ease"/>
+      </svg>
+      <span class="value">${r.overall}</span>
+    </div>
+    <p class="text-sm text-muted mt-2">out of 100</p>
+  </div>
+
+  <div class="tier-banner tier-${r.tier} mt-6 slide-up" style="animation-delay:.2s">
+    <h2 style="font-size:clamp(1rem,3vw,1.25rem);font-weight:700;margin-bottom:6px">${r.title}</h2>
+    <p class="text-sm" style="line-height:1.7">${r.summary}</p>
+  </div>
+
+  <div class="grid-3 mt-6 slide-up" style="animation-delay:.3s">
+    <div class="score-badge ${badgeClass(r.financial)}"><span class="icon">$</span><div class="meta"><small>Financial Readiness</small><strong>${r.financial}%</strong></div></div>
+    <div class="score-badge ${badgeClass(r.family)}"><span class="icon">👨‍👩‍👧</span><div class="meta"><small>Family Alignment</small><strong>${r.family}%</strong></div></div>
+    <div class="score-badge ${badgeClass(r.conflict)}"><span class="icon">⚡</span><div class="meta"><small>Conflict Risk</small><strong>${r.conflict}%</strong></div></div>
+    <div class="score-badge ${badgeClass(r.pressure)}"><span class="icon">🎯</span><div class="meta"><small>Marriage Pressure</small><strong>${r.pressure}%</strong></div></div>
+    <div class="score-badge ${badgeClass(r.retirement)}"><span class="icon">📈</span><div class="meta"><small>Retirement & Benefits</small><strong>${r.retirement}%</strong></div></div>
+    <div class="score-badge ${badgeClass(r.overall)}"><span class="icon">❤️</span><div class="meta"><small>Overall Match</small><strong>${r.overall}%</strong></div></div>
+  </div>
+
+  <div class="section-gap slide-up" style="animation-delay:.4s">
+    <h3 class="section-title">Category Breakdown</h3>
+    ${r.catResults.map(c=>`<div class="bar-row"><span class="emoji">${c.emoji}</span><div class="info"><div class="top"><span>${c.label}</span><span style="color:${scoreColor(c.score)}">${c.score}%</span></div><div class="bar-track"><div class="bar-fill ${barClass(c.score)}" style="width:${c.score}%"></div></div></div></div>`).join('')}
+  </div>
+
+  <div class="grid-2 section-gap slide-up" style="animation-delay:.5s">
+    <div class="card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="color:var(--green);font-size:20px">✅</span><strong>Top Strengths</strong></div>
+      ${r.strengths.map(s=>`<p class="text-sm mb-2" style="line-height:1.6"><span style="color:var(--green);font-weight:700">+ </span>${s}</p>`).join('')}
+    </div>
+    <div class="card"><div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="color:var(--amber);font-size:20px">⚠️</span><strong>Blind Spots</strong></div>
+      ${r.blindSpots.map(s=>`<p class="text-sm mb-2" style="line-height:1.6"><span style="color:var(--amber);font-weight:700">! </span>${s}</p>`).join('')}
+    </div>
+  </div>
+
+  <div class="section-gap slide-up" style="animation-delay:.6s">
+    <h3 class="section-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Conversations You Need Before Marriage</h3>
+    <div class="gap-3">${r.convos.map(c=>`<div class="convo-card"><span class="arrow">→</span><p>${c}</p></div>`).join('')}</div>
+  </div>
+
+  <div class="section-gap slide-up" style="animation-delay:.7s">
+    <h3 class="section-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg> Future Stress Risks</h3>
+    <div class="gap-3">${r.risks.map(ri=>`<div class="convo-card"><span class="arrow" style="color:var(--amber)">⚠</span><p>${ri}</p></div>`).join('')}</div>
+  </div>
+
+  <div class="card text-center section-gap slide-up" style="animation-delay:.8s;padding:28px">
+    <h3 style="font-weight:700;margin-bottom:4px">Share This Quiz</h3>
+    <p class="text-sm text-muted mb-4">Know someone who needs this conversation?</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px" class="btn-row">
+      <button class="btn btn-outline" onclick="copyLink()">📋 Copy Link</button>
+      <button class="btn btn-outline" onclick="downloadResults()">📥 Download Results</button>
+      <button class="btn btn-primary" onclick="${isSampleView?'startQuiz()':'show(\"landing\")'}">🔄 ${isSampleView?'Take the Real Quiz':'Retake Quiz'}</button>
+    </div>
+  </div>
+
+  <p class="text-xs text-center text-muted mt-6" style="max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7">
+    Remember: this quiz is a reflection tool, not a verdict. No quiz can predict the future of a relationship. Use these results as a starting point for honest, caring conversation with your partner. If you need support, consider speaking with a licensed counselor.
+  </p>`;
+
+  document.getElementById('resultsContent').innerHTML=html;
+}
+
+// ========== SHARE ==========
+function copyLink(){
+  const url=window.location.href.split('#')[0].split('?')[0];
+  navigator.clipboard.writeText(url).then(()=>alert('Link copied! Share it with friends.')).catch(()=>alert('Copy this URL: '+url));
+}
+
+function downloadResults(){
+  const r=calcResults();
+  let t='CHEMISTRY VS COMPATIBILITY — Marriage Readiness Results\n';
+  t+='='.repeat(55)+'\n\n';
+  t+=`Overall Compatibility Score: ${r.overall}/100\n${r.title}\n\n${r.summary}\n\n`;
+  t+='COMPOSITE SCORES\n'+'-'.repeat(30)+'\n';
+  t+=`Financial Readiness: ${r.financial}%\nFamily Alignment: ${r.family}%\nConflict Risk: ${r.conflict}%\nMarriage Pressure: ${r.pressure}%\nRetirement & Benefits: ${r.retirement}%\n\n`;
+  t+='CATEGORY BREAKDOWN\n'+'-'.repeat(30)+'\n';
+  r.catResults.forEach(c=>t+=`${c.emoji} ${c.label}: ${c.score}%\n`);
+  t+='\nTOP STRENGTHS\n'+'-'.repeat(30)+'\n';
+  r.strengths.forEach(s=>t+=`+ ${s}\n`);
+  t+='\nBLIND SPOTS\n'+'-'.repeat(30)+'\n';
+  r.blindSpots.forEach(s=>t+=`! ${s}\n`);
+  t+='\nCONVERSATIONS NEEDED\n'+'-'.repeat(30)+'\n';
+  r.convos.forEach(c=>t+=`→ ${c}\n`);
+  t+='\n'+'='.repeat(55)+'\nThis is a conversation tool, not professional advice.\n';
+
+  const blob=new Blob([t],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='marriage-readiness-results.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
